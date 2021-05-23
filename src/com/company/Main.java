@@ -11,7 +11,8 @@ public class Main {
 
 
         String[] options = {"Ingresar", "Registrarse"};
-        ImageIcon icon = new ImageIcon("D:/2 º año 1º cuatrimestre Programacion/TPFINAL/src/images.png");
+        //ImageIcon icon = new ImageIcon("D:/2 º año 1º cuatrimestre Programacion/TPFINAL/src/images.png");
+        ImageIcon icon = new ImageIcon("C:/Users/User/OneDrive/Documentos/2 año 1º cuatri/lab 3/TPFINAL/src/images.png");
         String n = (String)JOptionPane.showInputDialog(null, "Ingrese una opcion",
                 "TURNOS ", JOptionPane.QUESTION_MESSAGE, icon, options, options[1]);
         System.out.println(n);
