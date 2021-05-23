@@ -1,24 +1,25 @@
 package com.company;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener; /// library for cursor
 
-import java.util.HashMap;
+import java.io.*;
 import javax.swing.*;
+import java.util.List;
 
-public class Login implements ActionListener {
-    JFrame jFrame= new JFrame();
-    JButton jButton
+public class Login  {
 
-    HashMap<String, String> loginInfo= new HashMap<String, String>();
-    Login(HashMap<String, String> loginInfoOriginal){
+    List <Client> clients;
 
-        loginInfo= loginInfoOriginal;
 
-    }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+    /*String[] options = {"Ingresar", "Registrarse"};
+    ImageIcon icon = new ImageIcon("D:/2 º año 1º cuatrimestre Programacion/TPFINAL/src/images.png");
+    String n = (String)JOptionPane.showInputDialog(null, "Ingrese una opcion",
+            "TURNOS ", JOptionPane.QUESTION_MESSAGE, icon, options, options[1]);
+        System.out.println(n);*/
+    //String keyboard= JOptionPane.showInputDialog("Elige una opcion", "usuario@xmail.com");
+    //System.out.println(keyboard);
 
-    }
+
+
+
 }
