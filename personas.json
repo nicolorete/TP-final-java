@@ -1,0 +1,19 @@
+{
+  "uuid": "ddfe73b0-d331-4c17-9dab-e487eaa8f7a6",
+  "typeClient": "Eventual",
+  "name": "German",
+  "lastName": "Oyarzo",
+  "dni": 36384624,
+  "adress": "Las heras",
+  "email": "german@hotmail.com",
+  "celphone": 22359393
+}{
+  "uuid": "7b225464-9f3d-4afb-b495-4346f675e801",
+  "typeClient": "Eventual",
+  "name": "Pepe",
+  "lastName": "Argento",
+  "dni": 1034889348,
+  "adress": "Mexico 1223",
+  "email": "pepeargento@gmail.com",
+  "celphone": 22233333
+}

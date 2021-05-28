@@ -1,5 +1,7 @@
 package com.company;
 
+import com.google.gson.Gson;
+
 import java.io.*;
 
 public abstract class Person {
@@ -77,57 +79,11 @@ public abstract class Person {
 
 
 
-    public static void writeFile(){
-        try{
-            /// open file
-            BufferedWriter file = new BufferedWriter( new FileWriter(new File("personas.txt")));
-
-
-            file.write("German Oyarzo"); /// write in the file
-            file.newLine(); /// jumpLine
-
-            file.close(); /// we have to close the file to be sure that all information is going to be safe
 
 
 
-        } catch (IOException e) {  // put an exception
-            System.out.println("Se produjo un error " + e.getMessage());
-        }
-    }
 
-    public static void readFile(){
-
-        if(!new File("personas.txt").exists()){/// if doesnt exists the file it will go out the funtion
-
-            return;
-        }
-        BufferedReader fEntrada = null;
-
-        try{
-            fEntrada = new BufferedReader(new FileReader(new File("personas.txt")));
-
-            String linea = null;
-
-            while((linea = fEntrada.readLine())!= null){
-                System.out.println(linea);
-            }
-
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        } finally {
-            /// close the file
-            if(fEntrada != null){
-                try{
-                    fEntrada.close();
-                } catch (IOException e) {
-                    e.getMessage();
-                }
-            }
-        }
-
-    }
-
-    public void existeDni(int dni){
+    /*public void existeDni(int dni){
         if (equals(this.dni = dni)){
             System.out.println("El dni ya se encuentra cargado");
         }else
@@ -135,7 +91,7 @@ public abstract class Person {
             writeFile();
         }
 
-    }
+    }*/
 
 
     @Override
