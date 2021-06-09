@@ -1,14 +1,10 @@
 package com.company;
 
-import com.google.gson.Gson;
-
-import java.io.*;
-
 public abstract class Person {
 
     private String name;
     private String lastName;
-    private int dni;
+    private String dni;
     private String adress;
     private String email;
     private int celphone;
@@ -17,7 +13,7 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(String name, String lastName, int dni, String adress, String email, int celphone) {
+    public Person(String name, String lastName, String dni, String adress, String email, int celphone) {
         this.name = name;
         this.lastName = lastName;
         this.dni = dni;
@@ -44,11 +40,11 @@ public abstract class Person {
         this.lastName = lastName;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 

@@ -15,20 +15,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Login menu = new Login ();
-        //Login.menuLogin();
+        Login menu = new Login ();
+        Login.menuLogin();
 
 
         //writeFile(gson());
-        readFile("personas.json");
+        //readFile("personas.json");
+
+
 
         //Turno turno= new Turno();
 
         //turno.cargarTurno(LocalDateTime.of(2021, 07,05, 8,00));
         
-        //gson();
-        
-        //readFile();
+
 
 
 

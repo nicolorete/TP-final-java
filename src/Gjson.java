@@ -1,4 +1,5 @@
 package com.company;
+import java.util.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,26 +7,100 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
 public class Gjson {
 
+    private List<Client> clients;
+
     public Gjson() {
+        List<Client> clients = new ArrayList<Client>();
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
+    }
+
+
+
+    public static Client LoadClient() {
+
+        Client client = new Client();
+
+        String name, lastName, email, type;
+        String adress;
+        String dni;
+        int celphone;
+        UUID uuid;
+        Scanner keyboard = new Scanner(System.in);// create a new object with the word "new"
+
+        try {
+            client.setId(UUID.randomUUID());
+
+            System.out.println("Introduce your name");
+
+            client.setName(name = keyboard.nextLine());
+            System.out.println("Lastaname:");
+
+            client.setLastName(lastName = keyboard.nextLine());
+            System.out.println("DNI");
+            client.setDni(dni = keyboard.nextLine());
+            System.out.println("Adress:");
+            client.setAdress(adress = keyboard.nextLine());
+            System.out.println("Email: ");
+            client.setEmail(email = keyboard.next());
+            System.out.println("Celphone: ");
+            client.setCelphone(celphone = keyboard.nextInt());
+            System.out.println("Type: ");
+            client.setTypeClient(type = keyboard.next());
+        } catch (IndexOutOfBoundsException e) {  // put an exception
+            System.out.println("Se produjo un error " + e.getMessage());
+        } catch (InputMismatchException e){
+            System.out.println("Inserto mal los datos " + e.getMessage());
+        }
+
+        return client;
+
+        ///TODO
+        /*if (!existeDni(dni)){
+            Client client = new Client(name, lastName, dni, adress, email, celphone);
+            gson(client);
+            flag = true;
+        }
+        return flag;
+         }
+          */
 
     }
 
 
-    public static List<Client> gson() {
-        List<Client> clients = new ArrayList<Client>();
-        Client client = new Client("German", "Oyarzo", 36384624, "Las heras", "german@hotmail.com", 22359393, "Eventual");
+
+    public static List<Client> gson(Client client) {
+        List<Client> clients = new ArrayList<Client>(100);
+
+
+        /*Client client1 = new Client("German", "Oyarzo", 36384624, "Las heras", "german@hotmail.com", 22359393, "Eventual");
         Client client2 = new Client("Pepe", "Argento", 1034889348, "Mexico 1223", "pepeargento@gmail.com", 22233333, "Eventual");
+        Client client3 = new Client("Homero", "Simpson", 111345455, "Calle Falsa 1234", "homero@gmail.com", 11434554, "Eventual");
+
+
 
         clients.add(client);
+        clients.add(client1);
         clients.add(client2);
+        clients.add(client3);*/
+
+        clients=DataBase.addList(client);
+
+        //addToList(clients);
 
         return clients;
     }
+
 
 
     ///----- safe in a file---------------------
@@ -39,13 +114,14 @@ public class Gjson {
             /// open file
 
             fWriter = new BufferedWriter(new FileWriter(new File("personas.json")));
-            for (Client cli : clients) {
-                gson.toJson(cli, cli.getClass(), fWriter);
 
-                System.out.println("--------------------------------------");
-                System.out.println(cli);
-                System.out.println("--------------------------------------");
-            }
+            String json= gson.toJson(clients, clients.getClass());
+
+            System.out.println("--------------------------------------");
+            System.out.println(json);
+            System.out.println("--------------------------------------");
+
+            fWriter.write(json);
 
 
         } catch (IOException e) {  // put an exception
@@ -89,17 +165,18 @@ public class Gjson {
             clients = gson.fromJson(fReader, (new TypeToken<List<Client>>() {
             }.getType()));
 
-
+            /*System.out.println("--------------------------");
             clients.forEach(System.out::println);
+            System.out.println("--------------------------");*/
             ///== es lo mismo a lo de abajo
-            /*for(var cli : clients)
+            for(var cli : clients)
             {
 
 
                 System.out.println("--------------------------------------");
                 System.out.println(cli);
                 System.out.println("--------------------------------------");
-            }*/
+            }
 
 
         } catch (IOException e) {
@@ -116,5 +193,8 @@ public class Gjson {
             }
         }
     }
+
+    ///---------------------------------DELETE A OBJECT----------------------------------
+
 
 }
