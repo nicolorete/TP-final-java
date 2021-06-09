@@ -1,19 +1,32 @@
-{
-  "uuid": "ddfe73b0-d331-4c17-9dab-e487eaa8f7a6",
-  "typeClient": "Eventual",
-  "name": "German",
-  "lastName": "Oyarzo",
-  "dni": 36384624,
-  "adress": "Las heras",
-  "email": "german@hotmail.com",
-  "celphone": 22359393
-}{
-  "uuid": "7b225464-9f3d-4afb-b495-4346f675e801",
-  "typeClient": "Eventual",
-  "name": "Pepe",
-  "lastName": "Argento",
-  "dni": 1034889348,
-  "adress": "Mexico 1223",
-  "email": "pepeargento@gmail.com",
-  "celphone": 22233333
-}
+[
+  {
+    "uuid": "4d6a2994-1d46-4059-ba7e-16a9b88cd220",
+    "typeClient": "eventual",
+    "name": "monica argento",
+    "lastName": "suarez",
+    "dni": "444444444",
+    "adress": "belgrano 1123",
+    "email": "moni@gmail.com",
+    "celphone": 1211221
+  },
+  {
+    "uuid": "d9dd5443-5e7a-4b89-840b-4d75bbe8fc27",
+    "typeClient": "habitual",
+    "name": "jose pepe",
+    "lastName": "argento gonzalez",
+    "dni": "123456789",
+    "adress": "kansas city",
+    "email": "pepe@gmail.com",
+    "celphone": 1212112
+  },
+  {
+    "uuid": "fa047d82-a292-478e-9389-ae99475c976e",
+    "typeClient": "eventual",
+    "name": "german",
+    "lastName": "oyarzo",
+    "dni": "36384624",
+    "adress": "las heras 2600",
+    "email": "german@yahoo.com.ar",
+    "celphone": 112223322
+  }
+]
