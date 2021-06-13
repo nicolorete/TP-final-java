@@ -1,0 +1,124 @@
+[
+  {
+    "id": 1,
+    "client": {
+      "uuid": "638cf464-eaa9-4346-a25a-3854c7d28cac",
+      "typeClient": "habitual",
+      "name": "homero",
+      "lastName": "simpson",
+      "dni": "123456",
+      "adress": "calle falsa 1234",
+      "email": "homero@simpson",
+      "celphone": 2232323
+    },
+    "checkIn": {
+      "date": {
+        "year": 2021,
+        "month": 6,
+        "day": 30
+      },
+      "time": {
+        "hour": 8,
+        "minute": 0,
+        "second": 0,
+        "nano": 0
+      }
+    },
+    "checkOut": {
+      "date": {
+        "year": 2021,
+        "month": 6,
+        "day": 30
+      },
+      "time": {
+        "hour": 10,
+        "minute": 0,
+        "second": 0,
+        "nano": 0
+      }
+    },
+    "TipodeCancha": "Papi",
+    "item": {
+      "uuid": "7ef049ba-0fcb-49d1-b60d-da45a87de927",
+      "name": "papi",
+      "price": 400.0,
+      "stock": 1
+    },
+    "formatterOfPatters": {
+      "printerParser": {
+        "printerParsers": [
+          {
+            "literal": " "
+          },
+          {
+            "field": "DAY_OF_MONTH",
+            "minWidth": 1,
+            "maxWidth": 19,
+            "signStyle": "NORMAL",
+            "subsequentWidth": 0
+          },
+          {
+            "literal": "/"
+          },
+          {
+            "field": "MONTH_OF_YEAR",
+            "minWidth": 1,
+            "maxWidth": 19,
+            "signStyle": "NORMAL",
+            "subsequentWidth": 0
+          },
+          {
+            "literal": "/"
+          },
+          {
+            "field": "YEAR",
+            "minWidth": 1,
+            "maxWidth": 19,
+            "signStyle": "NORMAL",
+            "subsequentWidth": 0
+          },
+          {
+            "literal": " "
+          },
+          {
+            "literal": " "
+          },
+          {
+            "field": "CLOCK_HOUR_OF_AMPM",
+            "minWidth": 2,
+            "maxWidth": 2,
+            "signStyle": "NOT_NEGATIVE",
+            "subsequentWidth": 0
+          },
+          {
+            "literal": ":"
+          },
+          {
+            "field": "MINUTE_OF_HOUR",
+            "minWidth": 2,
+            "maxWidth": 2,
+            "signStyle": "NOT_NEGATIVE",
+            "subsequentWidth": 0
+          },
+          {
+            "literal": " "
+          },
+          {
+            "field": "AMPM_OF_DAY",
+            "textStyle": "SHORT",
+            "provider": {}
+          }
+        ],
+        "optional": false
+      },
+      "locale": "es_AR",
+      "decimalStyle": {
+        "zeroDigit": "0",
+        "positiveSign": "+",
+        "negativeSign": "-",
+        "decimalSeparator": "."
+      },
+      "resolverStyle": "SMART"
+    }
+  }
+]
