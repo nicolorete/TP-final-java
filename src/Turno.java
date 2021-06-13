@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.UUID;
 import com.google.gson.Gson;
@@ -13,36 +14,41 @@ import com.google.gson.reflect.TypeToken;
 
 
 public class Turno {
-    private UUID uuid;
+
+    private static int i = 1;
+
+    private int id;
+    //private UUID uuid;
     private Client client;
     private LocalDateTime checkIn;
     private LocalDateTime checkOut;
     private TipoCancha TipodeCancha ;
-    private boolean isOcupado;
-    private ItemRent [] item;
+    //private boolean isOcupado;
+    private ItemRent item;
 
     public Turno() {
     }
 
-    public Turno( Client client, LocalDateTime checkIn, LocalDateTime checkOut, TipoCancha tipodeCancha, boolean isOcupado, ItemRent[] item) {
-        this.uuid = uuid.randomUUID();
+    public Turno( Client client, LocalDateTime checkIn, LocalDateTime checkOut,TipoCancha tipodeCancha,  ItemRent item) {
+        //this.uuid = uuid.randomUUID();
+        this.id = i++;
         this.client = client;
         this.checkIn = checkIn;
-        this.checkOut = checkOut;
+        this.checkOut = checkOut.plusHours(2);/// add 2 hours.
         TipodeCancha = tipodeCancha;
-        this.isOcupado = isOcupado;
+        //this.isOcupado = isOcupado;
         this.item = item;
     }
 
     ///region GETTERS AND SETTERS
 
 
-    public UUID getUuid() {
-        return uuid;
+    public int getId() {
+        return id;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+    public void setUuid(int id) {
+        this.id = id;
     }
 
     public Client getClient() {
@@ -77,85 +83,41 @@ public class Turno {
         TipodeCancha = tipodeCancha;
     }
 
-    public boolean isOcupado() {
+  /*public boolean isOcupado() {
         return isOcupado;
     }
 
     public void setOcupado(boolean ocupado) {
         isOcupado = ocupado;
-    }
+    }*/
 
-    public ItemRent[] getItem() {
+    public ItemRent getItem() {
         return item;
     }
 
-    public void setItem(ItemRent[] item) {
+    public void setItem(ItemRent item) {
         this.item = item;
     }
 
     ///endregion
 
 
+    /// create a new format with patron
 
-    public void cargarTurno(LocalDateTime checkIn){
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        BufferedWriter fWriter = null;
-        try {
-            /// open file
-
-            fWriter = new BufferedWriter(new FileWriter(new File("turnos.json")));
-             String JsonClient = gson.toJson(checkIn); /// convierto un objeto a string, lo guardo en un archivo
-            System.out.println("Check in: " + checkIn);
-
-
-        } catch (IOException e) {  // put an exception
-            System.out.println("Se produjo un error " + e.getMessage());
-        } finally {
-            if (fWriter != null) {
-                try {
-                    fWriter.close();///we have to close the file to be sure that all information is going to be safe
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-
-                }
-
-            }
-
-        }
-
-
-
-    }
-
-
-
-    public void modificarTurno(){
-
-    }
-
-    public void eliminateTurno(int id){
-        for(int i=0; i<item.length; i++){
-            if(item[i] !=null && item[i].getUuid() == uuid){
-                item[i]=null;
-                break;
-            }
-        }
-    }
-
+    DateTimeFormatter formatterOfPatters= DateTimeFormatter.ofPattern(" d/M/u  hh:mm a");
 
 
 
     @Override
     public String toString() {
         return "Turno{" +
-                "\n ID: " + uuid.toString().substring(1,10) +
+                "\n ID: " + id +
                 "\n Client: " + client +
-                "\n CheckIn: " + checkIn +
-                "\n CheckOut:" + checkOut+
-                "\n TipodeCancha=" + TipodeCancha +
-                "\n isOcupado=" + isOcupado +
-                "\n item: " + Arrays.toString(item) +
+                "\n CheckIn: " + checkIn.format(formatterOfPatters) +
+                "\n CheckOut:" + checkOut.format(formatterOfPatters) +
+                "\n TipodeCancha: " + TipodeCancha +
+                //"\n isOcupado=" + isOcupado +
+                "\n item: " + item +
                 '}';
     }
 }

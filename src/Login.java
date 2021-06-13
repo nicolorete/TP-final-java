@@ -1,10 +1,14 @@
 package com.company;
 
-
+import com.company.DataBase;
 import com.google.gson.Gson;
-
+import com.company.DataBase;
 import java.io.*;
 import javax.swing.*;
+import javax.xml.crypto.Data;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -54,6 +58,9 @@ public class Login {
                         System.out.println("1: show all clients");
                         System.out.println("2: eliminate a client");
                         System.out.println("3: show a client");
+                        System.out.println("4: show all turnos");
+                        System.out.println("5: show a turno");
+
                         System.out.println("0 to exit");
                         option2 = myScanner.nextInt();
 
@@ -62,7 +69,7 @@ public class Login {
                                 admin.showClients("personas.json");
                                 break;
                             case 2:
-                                /// TODO BUSCAR CLIENTE Y ELIMINAR.
+
                                 DataBase dataBase = new DataBase();
                                 System.out.println("Ingrese un dni");
                                 String dniBuscar;
@@ -88,6 +95,32 @@ public class Login {
                                 System.out.println("--------------------------------");
 
                                 break;
+
+                            case 4:
+
+                                try{
+                                    admin.showTurnos("turnos.json");
+                                }catch (NullPointerException e)
+                                {
+                                    System.out.println("Doesn't exist id");
+                                }
+
+
+                                break;
+
+                            case 5:
+
+                                System.out.println("Ingrese id a buscar");
+                                int id;
+
+                                id=myScanner.nextInt();
+                                Turno turno = new Turno();
+
+                                turno = DataBase.getOurInstance().searchTurno(id);
+                                System.out.println("-----Turno found------");
+                                System.out.println(turno);
+                                System.out.println("--------------------------------");
+                                break;
                         }
                     } while (option2 != 0);
                     break;
@@ -101,6 +134,10 @@ public class Login {
                         System.out.println("1: First Time?, LOAD CLIENT");
                         System.out.println("2: Modify Client");
                         System.out.println("3: Login");
+                        System.out.println("4: Modify turno");
+                        System.out.println("5: Delete turno");
+                        System.out.println("6: Show my turno");
+
 
                         option3 = myScanner.nextInt();
 
@@ -108,7 +145,15 @@ public class Login {
                             case 1:
                                 /// CARGAR CLIENTES
                                 Gjson gson= new Gjson();
-                                Gjson.writeFile( gson.gson(Gjson.LoadClient()));
+                                Client client3= new Client();
+                                client3= Gjson.LoadClient();
+                                List<Client> list= new ArrayList<Client>();
+                                Gjson.gson(client3);
+
+                                //Gjson.writeFile(list);
+
+                                //Gjson.writeFile( gson.gson(Gjson.LoadClient()));
+
 
 
                                 break;
@@ -127,10 +172,17 @@ public class Login {
                                 break;
 
                             case 3:
-                                //// TODO INGRESAR CON NUMERO DOCUMENTO
-                                /// if existe dni
-                                System.out.println("Ingrese su dni");
-                                //dni=myScanner.nextInt();
+                                System.out.println("Ingrese un dni");
+                                String dni3;
+
+                                dni3=myScanner.next();
+                                Client client1 = new Client();
+
+                                client1 = DataBase.getOurInstance().searchClient(dni3);
+                                System.out.println("-----Client found------");
+                                System.out.println(client1);
+                                System.out.println("--------------------------------");
+
 
 
                                 do
@@ -141,8 +193,11 @@ public class Login {
                                     System.out.println("2: Tenis");
                                     System.out.println("3: Paddel");
 
+                                    ///TODO BORRAR UN TURNO
+
 
                                     option4 = myScanner.nextInt();
+
 
                                     switch (option4)
                                     {
@@ -161,10 +216,24 @@ public class Login {
                                                 {
                                                     case 1:
                                                         /// TODO RESERVAR HORARIO
+                                                        ItemRent itemRent1= new ItemRent("papi", 400, 2);
+
+
+                                                        Turno turno1= new Turno(client1, LocalDateTime.of(2021, 6, 30, 8, 0), LocalDateTime.of(2021, 6, 30, 8, 0), TipoCancha.Papi, itemRent1);
+                                                        DataBase.addListTurno(turno1);
+                                                        System.out.println(turno1);
+
                                                         break;
 
                                                     case 2:
-                                                        /// TODO RESERVAR HORARIO
+                                                        ItemRent itemRent2= new ItemRent("papi", 400, 2);
+
+
+                                                        Turno turno2= new Turno(client1, LocalDateTime.of(2021, 6, 30, 10, 0), LocalDateTime.of(2021, 6, 30, 8, 0), TipoCancha.Papi, itemRent2);
+                                                        DataBase.addListTurno(turno2);
+                                                        System.out.println(turno2);
+
+                                                        ///
                                                         break;
 
                                                     case 3:
@@ -219,6 +288,8 @@ public class Login {
                                                         break;
 
                                                 }
+
+
                                             }while(option6!=0);
 
                                             break;
@@ -263,6 +334,84 @@ public class Login {
 
                                     }
                                 }while(option4 !=0);
+
+                            case 4:
+                                try
+                                {
+                                    System.out.println("Ingrese el id del turno");
+                                    int id;
+                                    id=myScanner.nextInt();
+
+                                    Turno turno3= new Turno();
+
+                                    turno3 = DataBase.getOurInstance().searchTurno(id);
+                                    System.out.println("-----Turno found------");
+                                    System.out.println(turno3);
+                                    System.out.println("--------------------------------");
+
+
+                                    DataBase.getOurInstance().modifyTurno(id);
+                                    //DataBase.addListTurno(turno3);
+
+
+                                    System.out.println("Turno modified");
+                                }catch (Exception e)
+                                {
+                                    System.out.println("You have to insert a number" + e.getMessage());
+                                }
+
+
+                                break;
+                            case 5:
+
+                                try
+                                {
+                                    System.out.println("Ingrese el id del turno");
+                                    int id1;
+                                    id1=myScanner.nextInt();
+
+                                    Turno turno4= new Turno();
+
+                                    turno4 = DataBase.getOurInstance().searchTurno(id1);
+                                    System.out.println("-----Turno found------");
+                                    System.out.println(turno4);
+                                    System.out.println("--------------------------------");
+
+
+                                    DataBase.getOurInstance().deleteTurno(id1);
+                                    System.out.println("Turno deleted");
+
+                                }catch (Exception e){
+                                    System.out.println("You have to insert a number" + e.getMessage());
+                                }
+
+
+                                break;
+
+                            case 6:
+                                try{
+                                    System.out.println("Ingrese el id del turno");
+                                    int id2;
+                                    id2=myScanner.nextInt();
+
+                                    Turno turno5= new Turno();
+
+                                    turno5 = DataBase.getOurInstance().searchTurno(id2);
+                                    System.out.println("-----Turno found------");
+                                    System.out.println(turno5);
+                                    System.out.println("--------------------------------");
+
+                                }catch (InputMismatchException e)
+                                {
+                                    System.out.println("You have to insert a number " + e.getMessage());
+                                }
+
+
+
+
+
+
+                                break;
 
                         }
                     } while (option3 != 0);

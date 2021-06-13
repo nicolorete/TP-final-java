@@ -1,5 +1,7 @@
 package com.company;
+import java.time.LocalDateTime;
 import java.util.*;
+import com.company.DataBase;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -77,26 +79,221 @@ public class Gjson {
 
     }
 
+    public static void loadTurno(){
+
+        //// TODO INGRESAR CON NUMERO DOCUMENTO
+        /// if existe dni
+        System.out.println("Ingrese un dni");
+        String dni3;
+
+        Scanner myScanner= new Scanner(System.in);
+        dni3=myScanner.next();
+        Client client1 = new Client();
+
+        client1 = DataBase.getOurInstance().searchClient(dni3);
+        System.out.println("-----Client found------");
+        System.out.println(client1);
+        System.out.println("--------------------------------");
+        int option4;
+        int option5;
+        int option6;
+        int option7;
+
+        do
+        {
+            System.out.println("Choose an option (0 to exit)");
+            System.out.println("Select the sport");
+            System.out.println("1: Papi");
+            System.out.println("2: Tenis");
+            System.out.println("3: Paddel");
+
+            ///TODO BORRAR UN TURNO
+
+
+            option4 = myScanner.nextInt();
+
+
+            switch (option4)
+            {
+                case 1:
+
+                    do{
+                        System.out.println("Choose an option (0 to exit)");
+                        System.out.println("PAPI");
+                        System.out.println("Select the time");
+                        System.out.println("1: 08:00 AM");
+                        System.out.println("2: 14:00 PM");
+                        System.out.println("3: 20:00 PM");
+
+
+                        option5= myScanner.nextInt();
+
+                        switch (option5)
+                        {
+                            case 1:
+                                /// TODO RESERVAR HORARIO
+                                ItemRent itemRent1= new ItemRent("papi", 400, 2);
+
+
+                                Turno turno1= new Turno(client1, LocalDateTime.of(2021, 6, 30, 8, 0), LocalDateTime.of(2021, 6, 30, 8, 0), TipoCancha.Papi, itemRent1);
+                                DataBase.addListTurno(turno1);
+                                System.out.println(turno1);
+
+                                break;
+
+                            case 2:
+                                ItemRent itemRent2= new ItemRent("papi", 400, 2);
+
+
+                                Turno turno2= new Turno(client1, LocalDateTime.of(2021, 6, 30, 14, 0), LocalDateTime.of(2021, 6, 30, 14, 0), TipoCancha.Papi, itemRent2);
+                                DataBase.addListTurno(turno2);
+                                System.out.println(turno2);
+
+                                ///
+                                break;
+
+                            case 3:
+                                /// TODO RESERVAR HORARIO
+                                ItemRent itemRent3= new ItemRent("papi", 400, 2);
+
+
+                                Turno turno3= new Turno(client1, LocalDateTime.of(2021, 6, 30, 20, 0), LocalDateTime.of(2021, 6, 30, 20, 0), TipoCancha.Papi, itemRent3);
+                                DataBase.addListTurno(turno3);
+                                System.out.println(turno3);
+                                break;
+
+                            case 0:
+                                break;
+
+                            default:
+                                System.out.println("Incorrect option");
+                                break;
+
+                            /*if(option5==1)
+                            {
+                                return turno1;
+                            }else if(option5==2)
+                            {
+                                return turno2;
+                            }else if(option5==3)
+                            {
+                                return turno3;
+                            }*/
+
+                        }
+
+
+                    }while(option5!=0);
+
+                    break;
+
+                case 2:
+                    do{
+                        System.out.println("Choose an option (0 to exit)");
+                        System.out.println("TENIS");
+                        System.out.println("Select the time");
+                        System.out.println("1: 09:00 AM");
+                        System.out.println("2: 15:00 PM");
+                        System.out.println("3: 21:00 PM");
+
+                        option6= myScanner.nextInt();
+
+                        switch (option6)
+                        {
+                            case 1:
+                                /// TODO RESERVAR HORARIO
+
+                                break;
+
+                            case 2:
+                                /// TODO RESERVAR HORARIO
+                                System.out.println("RESERVANDO HORARIO...");
+                                break;
+
+                            case 3:
+                                /// TODO RESERVAR HORARIO
+                                System.out.println("FALTA RESERVANDO HORARIO...");
+                                break;
+
+                            case 0:
+                                break;
+
+                            default:
+                                System.out.println("Incorrect option");
+                                break;
+
+                        }
+
+
+                    }while(option6!=0);
+
+                    break;
+
+                case 3:
+                    do{
+                        System.out.println("Choose an option (0 to exit)");
+                        System.out.println("PADDEL");
+                        System.out.println("Select the time");
+                        System.out.println("1: 10:00 AM");
+                        System.out.println("2: 16:00 PM");
+                        System.out.println("3: 22:00 PM");
+
+
+                        option7= myScanner.nextInt();
+
+                        switch (option7)
+                        {
+                            case 1:
+                                /// TODO RESERVAR HORARIO
+                                break;
+
+                            case 2:
+                                /// TODO RESERVAR HORARIO
+                                break;
+
+                            case 3:
+                                /// TODO RESERVAR HORARIO
+                                break;
+
+                            case 0:
+                                break;
+
+                            default:
+                                System.out.println("Incorrect option");
+                                break;
+
+                        }
+                    }while(option7!=0);
+
+                    break;
+
+
+            }
+        }while(option4 !=0);
+
+
+
+
+    }
 
 
     public static List<Client> gson(Client client) {
         List<Client> clients = new ArrayList<Client>(100);
 
 
-        /*Client client1 = new Client("German", "Oyarzo", 36384624, "Las heras", "german@hotmail.com", 22359393, "Eventual");
-        Client client2 = new Client("Pepe", "Argento", 1034889348, "Mexico 1223", "pepeargento@gmail.com", 22233333, "Eventual");
-        Client client3 = new Client("Homero", "Simpson", 111345455, "Calle Falsa 1234", "homero@gmail.com", 11434554, "Eventual");
+        /*Client client1 = new Client("German", "Oyarzo", "36384624", "Las heras", "german@hotmail.com", 22359393, "Eventual");
+        Client client2 = new Client("Pepe", "Argento", "1034889348", "Mexico 1223", "pepeargento@gmail.com", 22233333, "Eventual");
+        Client client3 = new Client("Homero", "Simpson", "111345455", "Calle Falsa 1234", "homero@gmail.com", 11434554, "Eventual");
 
 
+        DataBase.addList(client1);
+        DataBase.addList(client2);
+        DataBase.addList(client3);*/
 
-        clients.add(client);
-        clients.add(client1);
-        clients.add(client2);
-        clients.add(client3);*/
 
         clients=DataBase.addList(client);
 
-        //addToList(clients);
+
 
         return clients;
     }
@@ -194,7 +391,7 @@ public class Gjson {
         }
     }
 
-    ///---------------------------------DELETE A OBJECT----------------------------------
+
 
 
 }

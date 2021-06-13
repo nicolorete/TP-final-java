@@ -23,6 +23,13 @@ public class Administrador extends Person{
         readFile(nameFile);
     }
 
+    public void showTurnos(String nameFile)
+    {
+        System.out.println("Show all turnos");
+        GenericJson genericJson= new GenericJson();
+        genericJson.readFile(nameFile);
+    }
+
 
 
     @Override

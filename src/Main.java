@@ -1,4 +1,5 @@
 package com.company;
+import com.company.DataBase;
 
 
 import javax.swing.*;
@@ -19,16 +20,6 @@ public class Main {
         Login.menuLogin();
 
 
-        //writeFile(gson());
-        //readFile("personas.json");
-
-
-
-        //Turno turno= new Turno();
-
-        //turno.cargarTurno(LocalDateTime.of(2021, 07,05, 8,00));
-        
-
 
 
 
@@ -37,29 +28,6 @@ public class Main {
 
 
     }
-
-
-
-    /*public static List<Client> traerClient(){ /// guarda todos los clientes
-        List<Client> clients= new ArrayList<Client>();
-
-        Client client = new Client("German", "Oyarzo", 36384624, "Las heras", "german@hotmail.com", 22359393, "Eventual");
-
-        clients.add(client);
-
-
-
-        Client client2 = new Client("Pepe", "Argento", 1034889348, "Mexico 1223", "pepeargento@gmail.com", 22233333, "Eventual");
-
-        clients.add(client2);
-
-
-        gson(client);
-        gson(client2);
-
-
-        return clients;
-    }*/
 
 
 }

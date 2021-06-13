@@ -7,14 +7,15 @@ public class ItemRent {
     private UUID uuid;
     private String name;
     private double price;
-
+    private int stock;
     public ItemRent() {
     }
 
-    public ItemRent(String name, double price) {
+    public ItemRent(String name, double price, int stock) {
         this.uuid = uuid.randomUUID();
         this.name = name;
         this.price = price;
+        this.stock = 1;
     }
 
     ///region GETTERS AND SETTERS
@@ -42,6 +43,14 @@ public class ItemRent {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
     ///endregion
 
 
@@ -51,6 +60,7 @@ public class ItemRent {
                 "\n id: " + uuid.toString().substring(1,10) +
                 "\n name: " + name +
                 "\n price: $" + price +
+                "\n stock: " + stock +
                 '}';
     }
 }
